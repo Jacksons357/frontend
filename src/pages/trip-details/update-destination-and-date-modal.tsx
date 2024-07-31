@@ -5,7 +5,7 @@ import { FormEvent, useState } from "react";
 import { DateRange, DayPicker } from "react-day-picker";
 import { format } from "date-fns";
 import { api } from "../../lib/axios";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 interface UpdateDestinationAndDateModalProps {
   closeDestinationAndDateModal: () => void
@@ -15,7 +15,6 @@ export function UpdateDestinationAndDateModal({
   closeDestinationAndDateModal
 }: UpdateDestinationAndDateModalProps){
   const { tripId } = useParams()
-  const navigate = useNavigate()
 
   const [destination, setDestination] = useState('')
   const [eventStartAndEndDates, setEventStartAndEndDates] = useState<DateRange | undefined>()
@@ -40,7 +39,7 @@ export function UpdateDestinationAndDateModal({
       return
     }
 
-    const response = await api.put(`/trips/${tripId}`, {
+    await api.put(`/trips/${tripId}`, {
       destination,
       starts_at: eventStartAndEndDates?.from,
       ends_at: eventStartAndEndDates?.to
