@@ -75,7 +75,11 @@ export function DestinationAndDateStep({
               </div>
             </div>
 
-            <DayPicker mode="range" selected={eventStartAndEndDates} onSelect={setEventStartAndEndDates} />
+            <DayPicker 
+              mode="range" 
+              selected={eventStartAndEndDates} 
+              onSelect={setEventStartAndEndDates} 
+            />
           </div>
         </div>
       )}
@@ -93,7 +97,6 @@ export function DestinationAndDateStep({
         <ArrowRight className="size-5 text-lime-950" />
       </Button>
       )}
-
     </div>
   )
 }
